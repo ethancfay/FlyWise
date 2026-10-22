@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import flights
@@ -10,6 +11,8 @@ origins = [
     "http://localhost:5173",  # Vite default dev server port
     "http://localhost:3000",  # or other frontend dev ports
 ]
+# Add deployed frontend URLs, comma-separated, e.g. https://flywise.vercel.app
+origins += [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
