@@ -1,3 +1,12 @@
+# FlyWise ✈️
+Flight assistant that forecasts fares and tells you the best time to book. Built at HackUMass XIII (Nov 2025).
+
+**Devpost:** https://devpost.com/software/flywise
+
+## Team
+- **Arjya** ([@codeArjya](https://github.com/codeArjya))
+- **Ethan Au-Yeung** ([@ethancfay](https://github.com/ethancfay)) – FastAPI backend and Gemini integration for AI travel insights
+
 # _**DEVPOST STORY**_
 
 ## Inspiration
