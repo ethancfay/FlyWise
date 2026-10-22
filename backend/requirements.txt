@@ -3,5 +3,8 @@ uvicorn
 numpy
 pandas
 python-dotenv
-sqlalchemy
-psycopg2-binary
+prophet
+joblib
+xgboost
+scikit-learn
+google-genai
