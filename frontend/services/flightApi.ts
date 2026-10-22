@@ -1,7 +1,7 @@
 import type { SearchParams, PredictionResult } from '../types';
 
 export const getFlightPrediction = async (params: SearchParams): Promise<PredictionResult> => {
-    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000';
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000';
 
     const payload = {
         origin: params.origin,
