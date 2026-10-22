@@ -1,15 +1,17 @@
 import os
 
 try:
-    from google.genai import GoogleGenAI
+    from google import genai
     USE_GENAI = True
 except ImportError:
     USE_GENAI = False
 
 class GeminiAdvisor:
     def __init__(self):
-        if USE_GENAI:
-            self.ai = GoogleGenAI(apiKey=os.environ.get("API_KEY"))
+        self.ai = None
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("API_KEY")
+        if USE_GENAI and api_key:
+            self.ai = genai.Client(api_key=api_key)
 
     def generate_recommendation(
         self,
@@ -47,9 +49,9 @@ class GeminiAdvisor:
         Generate a new recommendation following this style.
         """
 
-        if USE_GENAI:
+        if self.ai is not None:
             try:
-                resp = self.ai.models.generateContent(model="gemini-2.5-flash", contents=prompt)
+                resp = self.ai.models.generate_content(model="gemini-2.5-flash", contents=prompt)
                 return resp.text.strip()
             except Exception as e:
                 print("Gemini error:", e)
